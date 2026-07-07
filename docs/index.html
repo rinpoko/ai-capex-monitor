@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e1117">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Capex Monitor">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<title>AI・半導体 マネーフロー・モニター</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <div>
+    <h1>AI・半導体 マネーフロー・モニター</h1>
+    <div class="sub">設備投資 (CAPEX)・研究開発費・株価モメンタム・ニュースから業界の資金の流れを毎日可視化</div>
+  </div>
+  <div class="header-right">
+    <div id="generated-at" class="generated"></div>
+    <div class="auto-update-note">自動更新: 6時間ごと (GitHub Actions)</div>
+  </div>
+</header>
+
+<div id="loading" class="loading">読み込み中...</div>
+
+<main id="main" class="hidden">
+  <section id="funnel-hero" class="funnel-hero">
+    <div class="funnel-head">
+      <div class="funnel-title">AIマネーフロー・ファネル</div>
+      <div class="funnel-sub">段の太さ＝資金の集中度（ヒート）／▲＝資金が流入中（CAPEX拡大）。上流（資金源）→下流（部材・装置）。クリックで絞り込み</div>
+    </div>
+    <canvas id="funnel-canvas"></canvas>
+  </section>
+  <section id="summary" class="summary-strip"></section>
+
+  <h2>セクター資金フロー・ヒートマップ <span class="hint">ヒート = CAPEX前年比 40% + 株価1ヶ月モメンタム 40% + 直近7日ニュース量 20%（クリックで絞り込み）</span></h2>
+  <section id="sector-grid" class="sector-grid"></section>
+
+  <div class="charts-row">
+    <section class="card chart-card">
+      <h2>ハイパースケーラー 四半期CAPEX（USD, 十億ドル）</h2>
+      <canvas id="hyper-chart"></canvas>
+    </section>
+    <section class="card chart-card">
+      <h2>セクター別 CAPEX 前年同期比（中央値）</h2>
+      <canvas id="sector-capex-chart"></canvas>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>TSMC / UMC 月次売上YoY（台湾TWSE、決算より速い先行指標）</h2>
+    <canvas id="taiwan-chart"></canvas>
+    <div id="taiwan-note" class="hint" style="margin-top:8px"></div>
+  </section>
+
+  <section class="card">
+    <h2>企業ファンダメンタルズ <span id="table-filter-label" class="filter-label"></span>
+      <span class="hint">出典: SEC EDGAR（米国企業の一次開示データ）/ Yahoo Finance（四半期）/ Yahoo Finance（年次、日韓企業）</span>
+    </h2>
+    <div class="table-wrap">
+      <table id="company-table">
+        <thead>
+          <tr>
+            <th data-sort="name">企業</th>
+            <th data-sort="sector">セクター</th>
+            <th data-sort="market_cap" class="num">時価総額</th>
+            <th data-sort="r1m" class="num">株価 1M</th>
+            <th data-sort="r3m" class="num">株価 3M</th>
+            <th data-sort="capex_yoy" class="num">CAPEX YoY</th>
+            <th data-sort="rev_yoy" class="num">売上 YoY</th>
+            <th data-sort="rd_yoy" class="num">R&amp;D YoY</th>
+            <th data-sort="capex_intensity" class="num">CAPEX/売上</th>
+            <th data-sort="buzz" class="num">SNS話題度</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>関連ニュース・開示情報 <span id="news-filter-label" class="filter-label"></span></h2>
+    <div id="news-list"></div>
+  </section>
+
+  <footer>
+    データソース: SEC EDGAR（米国企業一次開示） / Yahoo Finance（財務・株価） / Google News RSS（記事） /
+    EDINET（日本企業開示、要APIキー設定） / Reddit・StockTwits（SNSセンチメント、要ネットワーク許可） /
+    台湾証券取引所TWSE（TSMC・UMC月次売上）。このページは静的サイト（GitHub Pages）としてホストされ、
+    GitHub Actionsが6時間ごとにデータを更新します。投資判断は自己責任で。
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

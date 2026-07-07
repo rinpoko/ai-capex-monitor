@@ -1,0 +1,29 @@
+{
+  "name": "ai-capex-monitor",
+  "productName": "AI Capex Monitor",
+  "version": "1.0.0",
+  "description": "AI・半導体業界のマネーフロー可視化ダッシュボード",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --mac --arm64"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.rinshiro.aicapexmonitor",
+    "productName": "AI Capex Monitor",
+    "files": [
+      "electron/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["arm64"] }],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.finance"
+    }
+  }
+}

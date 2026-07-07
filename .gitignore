@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+.DS_Store
+
+# ローカル運用時の作業データ（GitHub Pages版は docs/data/snapshot.json を参照）
+data/snapshot.json
+data/snapshot.tmp
+data/history/

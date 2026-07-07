@@ -1,0 +1,161 @@
+# AI・半導体エコシステムの監視対象ユニバース定義
+# tier 1 = 主力 / tier 2 = 2軍（次に資金が波及しやすい銘柄群）
+
+SECTORS = {
+    "hyperscaler": {"ja": "ハイパースケーラー・クラウド", "color": "#4f8ef7"},
+    "gpu":         {"ja": "GPU・AI半導体",               "color": "#76b900"},
+    "foundry":     {"ja": "ファウンドリ・IDM",           "color": "#e8543f"},
+    "memory":      {"ja": "メモリ・ストレージ",          "color": "#f2a93b"},
+    "equipment":   {"ja": "半導体製造装置",              "color": "#b06ef7"},
+    "power":       {"ja": "電力・冷却・サーバー",        "color": "#37c6a0"},
+    "optical":     {"ja": "光通信・インターコネクト",    "color": "#f76ec7"},
+    "cable":       {"ja": "電線・銅・ケーブル",          "color": "#c98a4b"},
+}
+
+COMPANIES = [
+    # --- ハイパースケーラー ---
+    {"ticker": "MSFT",      "name": "Microsoft",        "ja": "マイクロソフト",     "sector": "hyperscaler", "tier": 1},
+    {"ticker": "GOOGL",     "name": "Alphabet",         "ja": "アルファベット",     "sector": "hyperscaler", "tier": 1},
+    {"ticker": "AMZN",      "name": "Amazon",           "ja": "アマゾン",           "sector": "hyperscaler", "tier": 1},
+    {"ticker": "META",      "name": "Meta Platforms",   "ja": "メタ",               "sector": "hyperscaler", "tier": 1},
+    {"ticker": "ORCL",      "name": "Oracle",           "ja": "オラクル",           "sector": "hyperscaler", "tier": 1},
+    {"ticker": "CRWV",      "name": "CoreWeave",        "ja": "コアウィーブ",       "sector": "hyperscaler", "tier": 2},
+    {"ticker": "NBIS",      "name": "Nebius Group",     "ja": "ネビウス",           "sector": "hyperscaler", "tier": 2},
+    # --- GPU・AI半導体 ---
+    {"ticker": "NVDA",      "name": "NVIDIA",           "ja": "エヌビディア",       "sector": "gpu", "tier": 1},
+    {"ticker": "AMD",       "name": "AMD",              "ja": "AMD",                "sector": "gpu", "tier": 1},
+    {"ticker": "AVGO",      "name": "Broadcom",         "ja": "ブロードコム",       "sector": "gpu", "tier": 1},
+    {"ticker": "MRVL",      "name": "Marvell",          "ja": "マーベル",           "sector": "gpu", "tier": 2},
+    {"ticker": "QCOM",      "name": "Qualcomm",         "ja": "クアルコム",         "sector": "gpu", "tier": 2},
+    # --- ファウンドリ・IDM ---
+    {"ticker": "TSM",       "name": "TSMC",             "ja": "TSMC",               "sector": "foundry", "tier": 1},
+    {"ticker": "INTC",      "name": "Intel",            "ja": "インテル",           "sector": "foundry", "tier": 1},
+    {"ticker": "005930.KS", "name": "Samsung Electronics", "ja": "サムスン電子",    "sector": "foundry", "tier": 1},
+    {"ticker": "UMC",       "name": "UMC",              "ja": "UMC",                "sector": "foundry", "tier": 2},
+    {"ticker": "GFS",       "name": "GlobalFoundries",  "ja": "グローバルファウンドリーズ", "sector": "foundry", "tier": 2},
+    # --- メモリ・ストレージ ---
+    {"ticker": "MU",        "name": "Micron",           "ja": "マイクロン",         "sector": "memory", "tier": 1},
+    {"ticker": "000660.KS", "name": "SK hynix",         "ja": "SKハイニックス",     "sector": "memory", "tier": 1},
+    {"ticker": "285A.T",    "name": "Kioxia",           "ja": "キオクシア",         "sector": "memory", "tier": 1},
+    {"ticker": "SNDK",      "name": "SanDisk",          "ja": "サンディスク",       "sector": "memory", "tier": 2},
+    {"ticker": "WDC",       "name": "Western Digital",  "ja": "ウエスタンデジタル", "sector": "memory", "tier": 2},
+    {"ticker": "STX",       "name": "Seagate",          "ja": "シーゲイト",         "sector": "memory", "tier": 2},
+    # --- 半導体製造装置 ---
+    {"ticker": "ASML",      "name": "ASML",             "ja": "ASML",               "sector": "equipment", "tier": 1},
+    {"ticker": "AMAT",      "name": "Applied Materials","ja": "アプライドマテリアルズ", "sector": "equipment", "tier": 1},
+    {"ticker": "LRCX",      "name": "Lam Research",     "ja": "ラムリサーチ",       "sector": "equipment", "tier": 1},
+    {"ticker": "KLAC",      "name": "KLA",              "ja": "KLA",                "sector": "equipment", "tier": 1},
+    {"ticker": "8035.T",    "name": "Tokyo Electron",   "ja": "東京エレクトロン",   "sector": "equipment", "tier": 1},
+    {"ticker": "6857.T",    "name": "Advantest",        "ja": "アドバンテスト",     "sector": "equipment", "tier": 1},
+    {"ticker": "6146.T",    "name": "DISCO",            "ja": "ディスコ",           "sector": "equipment", "tier": 2},
+    {"ticker": "6920.T",    "name": "Lasertec",         "ja": "レーザーテック",     "sector": "equipment", "tier": 2},
+    {"ticker": "7735.T",    "name": "SCREEN",           "ja": "SCREEN",             "sector": "equipment", "tier": 2},
+    {"ticker": "6525.T",    "name": "Kokusai Electric", "ja": "KOKUSAI ELECTRIC",   "sector": "equipment", "tier": 2},
+    # --- 電力・冷却・サーバー ---
+    {"ticker": "VRT",       "name": "Vertiv",           "ja": "バーティブ",         "sector": "power", "tier": 1},
+    {"ticker": "ETN",       "name": "Eaton",            "ja": "イートン",           "sector": "power", "tier": 1},
+    {"ticker": "GEV",       "name": "GE Vernova",       "ja": "GEベルノバ",         "sector": "power", "tier": 1},
+    {"ticker": "DELL",      "name": "Dell Technologies","ja": "デル",               "sector": "power", "tier": 1},
+    {"ticker": "SMCI",      "name": "Super Micro",      "ja": "スーパーマイクロ",   "sector": "power", "tier": 2},
+    # --- 光通信・インターコネクト ---
+    {"ticker": "ANET",      "name": "Arista Networks",  "ja": "アリスタ",           "sector": "optical", "tier": 1},
+    {"ticker": "COHR",      "name": "Coherent",         "ja": "コヒレント",         "sector": "optical", "tier": 1},
+    {"ticker": "LITE",      "name": "Lumentum",         "ja": "ルーメンタム",       "sector": "optical", "tier": 1},
+    {"ticker": "CIEN",      "name": "Ciena",            "ja": "シエナ",             "sector": "optical", "tier": 2},
+    {"ticker": "FN",        "name": "Fabrinet",         "ja": "ファブリネット",     "sector": "optical", "tier": 2},
+    {"ticker": "ALAB",      "name": "Astera Labs",      "ja": "アステラ・ラボ",     "sector": "optical", "tier": 2},
+    {"ticker": "CRDO",      "name": "Credo Technology", "ja": "クレド",             "sector": "optical", "tier": 2},
+    # --- 電線・銅・ケーブル ---
+    {"ticker": "5803.T",    "name": "Fujikura",         "ja": "フジクラ",           "sector": "cable", "tier": 1},
+    {"ticker": "5801.T",    "name": "Furukawa Electric","ja": "古河電気工業",       "sector": "cable", "tier": 1},
+    {"ticker": "5802.T",    "name": "Sumitomo Electric","ja": "住友電気工業",       "sector": "cable", "tier": 1},
+    {"ticker": "5805.T",    "name": "SWCC",             "ja": "SWCC",               "sector": "cable", "tier": 2},
+]
+
+# ハイパースケーラーCAPEX積み上げチャートの対象（USD建て・暦四半期で揃うもの）
+HYPERSCALER_CHART = ["MSFT", "GOOGL", "AMZN", "META", "ORCL"]
+
+# Google News RSS の検索クエリ。lang: "ja" or "en"
+NEWS_QUERIES = [
+    {"q": "AI データセンター 投資",                    "lang": "ja", "sectors": ["hyperscaler", "power"]},
+    {"q": "半導体 設備投資",                           "lang": "ja", "sectors": ["foundry", "equipment"]},
+    {"q": "HBM OR DRAM 価格 メモリ",                   "lang": "ja", "sectors": ["memory"]},
+    {"q": "キオクシア OR NAND OR SSD",                 "lang": "ja", "sectors": ["memory"]},
+    {"q": "光トランシーバー OR シリコンフォトニクス",  "lang": "ja", "sectors": ["optical"]},
+    {"q": "フジクラ OR 古河電工 OR 電線 データセンター","lang": "ja", "sectors": ["cable"]},
+    {"q": "エヌビディア OR AMD AI半導体",              "lang": "ja", "sectors": ["gpu"]},
+    {"q": "データセンター 電力 OR 冷却",               "lang": "ja", "sectors": ["power"]},
+    {"q": "hyperscaler capex",                          "lang": "en", "sectors": ["hyperscaler"]},
+    {"q": "HBM memory supply demand",                   "lang": "en", "sectors": ["memory"]},
+    {"q": "AI data center power cooling investment",    "lang": "en", "sectors": ["power"]},
+    {"q": "co-packaged optics OR optical interconnect AI", "lang": "en", "sectors": ["optical"]},
+    {"q": "semiconductor equipment orders",             "lang": "en", "sectors": ["equipment"]},
+    {"q": "copper cable data center demand",            "lang": "en", "sectors": ["cable"]},
+    {"q": "TSMC OR Samsung foundry capex",              "lang": "en", "sectors": ["foundry"]},
+    {"q": "Nvidia OR Broadcom AI chip",                 "lang": "en", "sectors": ["gpu"]},
+]
+
+# ニュース本文タグ付け用のエイリアス（小文字比較）
+COMPANY_ALIASES = {
+    "MSFT": ["microsoft", "マイクロソフト", "azure"],
+    "GOOGL": ["alphabet", "google", "グーグル", "アルファベット"],
+    "AMZN": ["amazon", "aws", "アマゾン"],
+    "META": ["meta", "メタ"],
+    "ORCL": ["oracle", "オラクル"],
+    "CRWV": ["coreweave", "コアウィーブ"],
+    "NBIS": ["nebius", "ネビウス"],
+    "NVDA": ["nvidia", "エヌビディア"],
+    "AMD": ["amd"],
+    "AVGO": ["broadcom", "ブロードコム"],
+    "MRVL": ["marvell", "マーベル"],
+    "QCOM": ["qualcomm", "クアルコム"],
+    "TSM": ["tsmc", "台湾積体電路"],
+    "INTC": ["intel", "インテル"],
+    "005930.KS": ["samsung", "サムスン"],
+    "UMC": ["umc"],
+    "GFS": ["globalfoundries"],
+    "MU": ["micron", "マイクロン"],
+    "000660.KS": ["sk hynix", "hynix", "ハイニックス"],
+    "285A.T": ["kioxia", "キオクシア"],
+    "SNDK": ["sandisk", "サンディスク"],
+    "WDC": ["western digital", "ウエスタンデジタル"],
+    "STX": ["seagate", "シーゲイト"],
+    "ASML": ["asml"],
+    "AMAT": ["applied materials", "アプライドマテリアルズ"],
+    "LRCX": ["lam research", "ラムリサーチ"],
+    "KLAC": ["kla"],
+    "8035.T": ["tokyo electron", "東京エレクトロン"],
+    "6857.T": ["advantest", "アドバンテスト"],
+    "6146.T": ["disco", "ディスコ"],
+    "6920.T": ["lasertec", "レーザーテック"],
+    "7735.T": ["screenホールディングス", "screenホールディングス", "screen holdings"],
+    "6525.T": ["kokusai electric", "kokusai"],
+    "VRT": ["vertiv", "バーティブ"],
+    "ETN": ["eaton", "イートン"],
+    "GEV": ["ge vernova", "geベルノバ"],
+    "DELL": ["dell", "デル"],
+    "SMCI": ["super micro", "supermicro", "スーパーマイクロ"],
+    "ANET": ["arista", "アリスタ"],
+    "COHR": ["coherent", "コヒレント"],
+    "LITE": ["lumentum", "ルーメンタム"],
+    "CIEN": ["ciena", "シエナ"],
+    "FN": ["fabrinet", "ファブリネット"],
+    "ALAB": ["astera labs", "アステラ"],
+    "CRDO": ["credo", "クレド"],
+    "5803.T": ["fujikura", "フジクラ"],
+    "5801.T": ["furukawa electric", "古河電気", "古河電工"],
+    "5802.T": ["sumitomo electric", "住友電気", "住友電工"],
+    "5805.T": ["swcc"],
+}
+
+# セクター推定用キーワード（クエリ由来のタグに追加で付与）
+SECTOR_KEYWORDS = {
+    "hyperscaler": ["hyperscaler", "クラウド", "cloud", "azure", "aws", "capex", "設備投資計画"],
+    "gpu": ["gpu", "ai半導体", "ai chip", "accelerator", "アクセラレータ"],
+    "foundry": ["foundry", "ファウンドリ", "fab", "工場", "先端プロセス", "2nm", "3nm"],
+    "memory": ["hbm", "dram", "nand", "ssd", "メモリ", "memory", "ストレージ", "storage"],
+    "equipment": ["製造装置", "equipment", "露光", "lithography", "エッチング", "etching"],
+    "power": ["電力", "power", "冷却", "cooling", "原発", "nuclear", "変圧器", "transformer", "サーバー", "server"],
+    "optical": ["光", "optical", "optics", "transceiver", "トランシーバ", "photonics", "フォトニクス", "800g", "1.6t"],
+    "cable": ["銅", "copper", "ケーブル", "cable", "電線", "wire"],
+}
